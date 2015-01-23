@@ -1,0 +1,6 @@
+0. Download reference annotation: Follow the instructions written in Bowtie2Index/README.
+1. Load all necessary modules listed in the file set-path-variable.sh (assuming that all software is available in your machine). 
+2. Prepare transcriptome annotation files: Run the commands in generate-known-fa-files.sh.
+3. For each of the presented examples run the commands in commands.sh.
+
+NOTE: Steps 0, 1 and 2 have to be done only once.

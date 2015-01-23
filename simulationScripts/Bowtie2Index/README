@@ -1,0 +1,21 @@
+Download 
+ftp://igenome:G3nom3s4u@ussd-ftp.illumina.com/Homo_sapiens/UCSC/hg19/Homo_sapiens_UCSC_hg19.tar.gz
+
+(note: ~20.5 GB) 
+
+This folder should contain everything located to 
+/Homo_sapiens/UCSC/hg19/Sequence/Bowtie2Index/
+that is:
+genome.1.bt2
+genome.2.bt2  
+genome.3.bt2  
+genome.4.bt2  
+genome.fa  
+genome.fa.fai  
+genome.fa.flat  
+genome.fa.gdx  
+genome.rev.1.bt2  
+genome.rev.2.bt2
+
+
+NOTE: The analysis will NOT be correct if a different annotation is provided.
