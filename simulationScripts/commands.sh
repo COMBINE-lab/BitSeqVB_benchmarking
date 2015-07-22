@@ -43,22 +43,27 @@ R CMD BATCH trFiles.R
 # replicate 1															#
 spankisim_transcripts -o A1 -g ../genesNew.gtf -f ../Bowtie2Index/genome.fa -bp 76 -t tr_File_A1.tr -ends 2			#
 cd A1 && R CMD BATCH ../../getTranscriptNames.R											#
+./../../shuffleReadsTMP.sh 		#shuffle read pairs (skip this if your are not using sailfish and eXpress)		#
 cd ..																#
 # replicate 2															#
 spankisim_transcripts -o A2 -g ../genesNew.gtf -f ../Bowtie2Index/genome.fa -bp 76 -t tr_File_A2.tr -ends 2			#
 cd A2 && R CMD BATCH ../../getTranscriptNames.R											#
+./../../shuffleReadsTMP.sh 		#shuffle read pairs (skip this if your are not using sailfish and eXpress)		#
 cd ..																#
 # replicate 3															#
 spankisim_transcripts -o A3 -g ../genesNew.gtf -f ../Bowtie2Index/genome.fa -bp 76 -t tr_File_A3.tr -ends 2			#
 cd A3 && R CMD BATCH ../../getTranscriptNames.R											#
+./../../shuffleReadsTMP.sh 		#shuffle read pairs (skip this if your are not using sailfish and eXpress)		#
 cd ..																#
 # replicate 4															#
 spankisim_transcripts -o A4 -g ../genesNew.gtf -f ../Bowtie2Index/genome.fa -bp 76 -t tr_File_A4.tr -ends 2			#
 cd A4 && R CMD BATCH ../../getTranscriptNames.R											#
+./../../shuffleReadsTMP.sh 		#shuffle read pairs (skip this if your are not using sailfish and eXpress)		#
 cd ..																#
 # replicate 5															#
 spankisim_transcripts -o A5 -g ../genesNew.gtf -f ../Bowtie2Index/genome.fa -bp 76 -t tr_File_A5.tr -ends 2			#
 cd A5 && R CMD BATCH ../../getTranscriptNames.R											#
+./../../shuffleReadsTMP.sh 		#shuffle read pairs (skip this if your are not using sailfish and eXpress)		#
 cd ..																#
 #################################################################################################################################
 
@@ -96,31 +101,31 @@ mkdir tophat																		#
 cd tophat																		#
 # NOTE: Each of the following commands can also run in parallel for each replicate (highly recommended).						# 
 #replicate 1																		#
-tophat -o A1.tophat.out -p 4 -r 200 ../../Bowtie2Index/genome ../A1/sim_1.fastq ../A1/sim_2.fastq							#
+tophat -o A1.tophat.out -p 4 -g 20 -i 20 -m 2 -r 200 --microexon-search --min-anchor-length 3 --read-mismatches 10 --read-gap-length 10 --read-edit-dist 10 ../../Bowtie2Index/genome ../A1/sim_1.fastq ../A1/sim_2.fastq							#
 cd A1.tophat.out																	#
 samtools sort accepted_hits.bam accepted_hits.sorted													#
 samtools index accepted_hits.sorted.bam															#
 cd ..																			#
 #replicate 2																		#
-tophat -o A2.tophat.out -p 4 -r 200 ../../Bowtie2Index/genome ../A2/sim_1.fastq ../A2/sim_2.fastq							#
+tophat -o A2.tophat.out -p 4 -g 20 -i 20 -m 2 -r 200 --microexon-search --min-anchor-length 3 --read-mismatches 10 --read-gap-length 10 --read-edit-dist 10 ../../Bowtie2Index/genome ../A2/sim_1.fastq ../A2/sim_2.fastq							#
 cd A2.tophat.out																	#
 samtools sort accepted_hits.bam accepted_hits.sorted													#
 samtools index accepted_hits.sorted.bam															#
 cd ..																			#
 #replicate 3																		#
-tophat -o A3.tophat.out -p 4 -r 200 ../../Bowtie2Index/genome ../A3/sim_1.fastq ../A3/sim_2.fastq							#
+tophat -o A3.tophat.out -p 4 -g 20 -i 20 -m 2 -r 200 --microexon-search --min-anchor-length 3 --read-mismatches 10 --read-gap-length 10 --read-edit-dist 10 ../../Bowtie2Index/genome ../A3/sim_1.fastq ../A3/sim_2.fastq							#
 cd A3.tophat.out																	#
 samtools sort accepted_hits.bam accepted_hits.sorted													#
 samtools index accepted_hits.sorted.bam															#
 cd ..																			#
 #replicate 4																		#
-tophat -o A4.tophat.out -p 4 -r 200 ../../Bowtie2Index/genome ../A4/sim_1.fastq ../A4/sim_2.fastq							#
+tophat -o A4.tophat.out -p 4 -g 20 -i 20 -m 2 -r 200 --microexon-search --min-anchor-length 3 --read-mismatches 10 --read-gap-length 10 --read-edit-dist 10 ../../Bowtie2Index/genome ../A4/sim_1.fastq ../A4/sim_2.fastq							#
 cd A4.tophat.out																	#
 samtools sort accepted_hits.bam accepted_hits.sorted													#
 samtools index accepted_hits.sorted.bam															#
 cd ..																			#
 #replicate 5																		#
-tophat -o A5.tophat.out -p 4 -r 200 ../../Bowtie2Index/genome ../A5/sim_1.fastq ../A5/sim_2.fastq							#
+tophat -o A5.tophat.out -p 4 -g 20 -i 20 -m 2 -r 200 --microexon-search --min-anchor-length 3 --read-mismatches 10 --read-gap-length 10 --read-edit-dist 10 ../../Bowtie2Index/genome ../A5/sim_1.fastq ../A5/sim_2.fastq							#
 cd A5.tophat.out																	#
 samtools sort accepted_hits.bam accepted_hits.sorted													#
 samtools index accepted_hits.sorted.bam															#
@@ -193,21 +198,27 @@ cd ..																#
 
 
 # STEP 4.e RSEM
-#########################################################################################################################################
-# Run RSEM																#
-mkdir rsem																#
-cd rsem																	#
-# NOTE: Each of the following commands can also run in parallel for each replicate (highly recommended).				#
-rsem-calculate-expression -p 4 --paired-end --bowtie2 ../A1/sim_1.fastq ../A1/sim_2.fastq ../../transcriptome_data/ref expressionA1	#
-rsem-calculate-expression -p 4 --paired-end --bowtie2 ../A2/sim_1.fastq ../A2/sim_2.fastq ../../transcriptome_data/ref expressionA2	#
-rsem-calculate-expression -p 4 --paired-end --bowtie2 ../A3/sim_1.fastq ../A3/sim_2.fastq ../../transcriptome_data/ref expressionA3	#
-rsem-calculate-expression -p 4 --paired-end --bowtie2 ../A4/sim_1.fastq ../A4/sim_2.fastq ../../transcriptome_data/ref expressionA4	#
-rsem-calculate-expression -p 4 --paired-end --bowtie2 ../A5/sim_1.fastq ../A5/sim_2.fastq ../../transcriptome_data/ref expressionA5	#
-# Process output															#
-R CMD BATCH ../../rsemNames.R														#
-R CMD BATCH ../../withinGeneRSEM.R													#
-cd ..																	#
-#########################################################################################################################################
+#########################################################################################################################################################
+# Run RSEM																		#
+mkdir rsem																		#
+cd rsem																			#
+# NOTE: Each of the following commands can also run in parallel for each replicate (highly recommended).						#
+rsem-calculate-expression -p 4 --paired-end --bowtie2 --no-bam-output ../A1/sim_1.fastq ../A1/sim_2.fastq ../../transcriptome_data/ref expressionA1	#
+rsem-calculate-expression -p 4 --paired-end --bowtie2 --no-bam-output ../A2/sim_1.fastq ../A2/sim_2.fastq ../../transcriptome_data/ref expressionA2	#
+rsem-calculate-expression -p 4 --paired-end --bowtie2 --no-bam-output ../A3/sim_1.fastq ../A3/sim_2.fastq ../../transcriptome_data/ref expressionA3	#
+rsem-calculate-expression -p 4 --paired-end --bowtie2 --no-bam-output ../A4/sim_1.fastq ../A4/sim_2.fastq ../../transcriptome_data/ref expressionA4	#
+rsem-calculate-expression -p 4 --paired-end --bowtie2 --no-bam-output ../A5/sim_1.fastq ../A5/sim_2.fastq ../../transcriptome_data/ref expressionA5	#
+# also use rsem-PME																	#
+rsem-calculate-expression -p 4 --calc-pme --paired-end --bowtie2 --no-bam-output ../A1/sim_1.fastq ../A1/sim_2.fastq ../../transcriptome_data/ref expressionPMEA1	#
+rsem-calculate-expression -p 4 --calc-pme --paired-end --bowtie2 --no-bam-output ../A2/sim_1.fastq ../A2/sim_2.fastq ../../transcriptome_data/ref expressionPMEA2	#
+rsem-calculate-expression -p 4 --calc-pme --paired-end --bowtie2 --no-bam-output ../A3/sim_1.fastq ../A3/sim_2.fastq ../../transcriptome_data/ref expressionPMEA3	#
+rsem-calculate-expression -p 4 --calc-pme --paired-end --bowtie2 --no-bam-output ../A4/sim_1.fastq ../A4/sim_2.fastq ../../transcriptome_data/ref expressionPMEA4	#
+rsem-calculate-expression -p 4 --calc-pme --paired-end --bowtie2 --no-bam-output ../A5/sim_1.fastq ../A5/sim_2.fastq ../../transcriptome_data/ref expressionPMEA5	#
+# Process output																	#
+R CMD BATCH ../../rsemNames.R																#
+R CMD BATCH ../../withinGeneRSEM.R															#
+cd ..																			#
+#########################################################################################################################################################
 
 
 # STEP 4.f Sailfish
@@ -262,6 +273,7 @@ R CMD BATCH ../../xpressNames.R								#
 R CMD BATCH ../../withinGeneXpress.R							#
 cd ..											#
 #########################################################################################
+
 
 
 # STEP 5. Produce graphs
