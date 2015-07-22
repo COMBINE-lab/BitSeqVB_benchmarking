@@ -43,55 +43,55 @@ R CMD BATCH trFiles.R
 # replicate 1															#
 spankisim_transcripts -o A1 -g ../genesNew.gtf -f ../Bowtie2Index/genome.fa -bp 76 -t tr_File_A1.tr -ends 2			#
 cd A1 && R CMD BATCH ../../getTranscriptNames.R											#
-./../../shuffleReadsTMP.sh 		#shuffle read pairs (skip this if your are not using sailfish and eXpress)		#
+./../../shuffleReadsTMP.sh 		#shuffle read pairs (essential if your are  using sailfish and/or eXpress)		#
 cd ..																#
 # replicate 2															#
 spankisim_transcripts -o A2 -g ../genesNew.gtf -f ../Bowtie2Index/genome.fa -bp 76 -t tr_File_A2.tr -ends 2			#
 cd A2 && R CMD BATCH ../../getTranscriptNames.R											#
-./../../shuffleReadsTMP.sh 		#shuffle read pairs (skip this if your are not using sailfish and eXpress)		#
+./../../shuffleReadsTMP.sh 		#shuffle read pairs (essential  if your are using sailfish and/or eXpress)		#
 cd ..																#
 # replicate 3															#
 spankisim_transcripts -o A3 -g ../genesNew.gtf -f ../Bowtie2Index/genome.fa -bp 76 -t tr_File_A3.tr -ends 2			#
 cd A3 && R CMD BATCH ../../getTranscriptNames.R											#
-./../../shuffleReadsTMP.sh 		#shuffle read pairs (skip this if your are not using sailfish and eXpress)		#
+./../../shuffleReadsTMP.sh 		#shuffle read pairs (essential  if your are using sailfish and/or eXpress)		#
 cd ..																#
 # replicate 4															#
 spankisim_transcripts -o A4 -g ../genesNew.gtf -f ../Bowtie2Index/genome.fa -bp 76 -t tr_File_A4.tr -ends 2			#
 cd A4 && R CMD BATCH ../../getTranscriptNames.R											#
-./../../shuffleReadsTMP.sh 		#shuffle read pairs (skip this if your are not using sailfish and eXpress)		#
+./../../shuffleReadsTMP.sh 		#shuffle read pairs (essential  if your are using sailfish and/or eXpress)		#
 cd ..																#
 # replicate 5															#
 spankisim_transcripts -o A5 -g ../genesNew.gtf -f ../Bowtie2Index/genome.fa -bp 76 -t tr_File_A5.tr -ends 2			#
 cd A5 && R CMD BATCH ../../getTranscriptNames.R											#
-./../../shuffleReadsTMP.sh 		#shuffle read pairs (skip this if your are not using sailfish and eXpress)		#
+./../../shuffleReadsTMP.sh 		#shuffle read pairs (essential  if your are using sailfish and/or eXpress)		#
 cd ..																#
 #################################################################################################################################
 
 
 
 # STEP 3.a Bowtie						
-#########################################################################################################################################################
-mkdir bowtie																		#
-cd bowtie																		#
-# Run Bowtie and compute alignment probabilities for BitSeq. 												#
-# NOTE: Each of the following commands can also run in parallel for each replicate (highly recommended).						# 
-# replicate 1																		#
-bowtie2 -q -k 100 --threads 4 --no-mixed --no-discordant -x ../../transcriptome_data/known -1 ../A1/sim_1.fastq -2 ../A1/sim_2.fastq -S A1.sam		#
-parseAlignment A1.sam -o A1.prob --trSeqFile ../../transcriptome_data/known.fa --trInfoFile data.tr --uniform --verbose					#
-# replicate 2																		#
-bowtie2 -q -k 100 --threads 4 --no-mixed --no-discordant -x ../../transcriptome_data/known -1 ../A2/sim_1.fastq -2 ../A2/sim_2.fastq -S A2.sam		#
-parseAlignment A2.sam -o A2.prob --trSeqFile ../../transcriptome_data/known.fa --uniform --verbose							#
-# replicate 3																		#
-bowtie2 -q -k 100 --threads 4 --no-mixed --no-discordant -x ../../transcriptome_data/known -1 ../A3/sim_1.fastq -2 ../A3/sim_2.fastq -S A3.sam		#
-parseAlignment A3.sam -o A3.prob --trSeqFile ../../transcriptome_data/known.fa --uniform --verbose							#
-# replicate 4																		#
-bowtie2 -q -k 100 --threads 4 --no-mixed --no-discordant -x ../../transcriptome_data/known -1 ../A4/sim_1.fastq -2 ../A4/sim_2.fastq -S A4.sam		#
-parseAlignment A4.sam -o A4.prob --trSeqFile ../../transcriptome_data/known.fa --uniform --verbose							#
-# replicate 5																		#
-bowtie2 -q -k 100 --threads 4 --no-mixed --no-discordant -x ../../transcriptome_data/known -1 ../A5/sim_1.fastq -2 ../A5/sim_2.fastq -S A5.sam		#
-parseAlignment A5.sam -o A5.prob --trSeqFile ../../transcriptome_data/known.fa --uniform --verbose							#
-cd ..																			#
-#########################################################################################################################################################
+#################################################################################################################################################
+mkdir bowtie																	#
+cd bowtie																	#
+# Run Bowtie and compute alignment probabilities for BitSeq. 											#
+# NOTE: Each of the following commands can also run in parallel for each replicate (highly recommended).					# 
+# replicate 1																	#
+bowtie2 -q -k 100 --threads 4 --no-mixed --no-discordant -x ../../transcriptome_data/known -1 ../A1/out1.fq -2 ../A1/out2.fq -S A1.sam		#
+parseAlignment A1.sam -o A1.prob --trSeqFile ../../transcriptome_data/known.fa --trInfoFile data.tr --uniform --verbose				#
+# replicate 2																	#
+bowtie2 -q -k 100 --threads 4 --no-mixed --no-discordant -x ../../transcriptome_data/known -1 ../A2/out1.fq -2 ../A2/out2.fq -S A2.sam		#
+parseAlignment A2.sam -o A2.prob --trSeqFile ../../transcriptome_data/known.fa --uniform --verbose						#
+# replicate 3																	#
+bowtie2 -q -k 100 --threads 4 --no-mixed --no-discordant -x ../../transcriptome_data/known -1 ../A3/out1.fq -2 ../A3/out2.fq -S A3.sam		#
+parseAlignment A3.sam -o A3.prob --trSeqFile ../../transcriptome_data/known.fa --uniform --verbose						#
+# replicate 4																	#
+bowtie2 -q -k 100 --threads 4 --no-mixed --no-discordant -x ../../transcriptome_data/known -1 ../A4/out1.fq -2 ../A4/out2.fq -S A4.sam		#
+parseAlignment A4.sam -o A4.prob --trSeqFile ../../transcriptome_data/known.fa --uniform --verbose						#
+# replicate 5																	#
+bowtie2 -q -k 100 --threads 4 --no-mixed --no-discordant -x ../../transcriptome_data/known -1 ../A5/out1.fq -2 ../A5/out2.fq -S A5.sam		#
+parseAlignment A5.sam -o A5.prob --trSeqFile ../../transcriptome_data/known.fa --uniform --verbose						#
+cd ..																		#
+#################################################################################################################################################
 
 
 # STEP 3.b Tophat
@@ -198,44 +198,44 @@ cd ..																#
 
 
 # STEP 4.e RSEM
-#########################################################################################################################################################
-# Run RSEM																		#
-mkdir rsem																		#
-cd rsem																			#
-# NOTE: Each of the following commands can also run in parallel for each replicate (highly recommended).						#
-rsem-calculate-expression -p 4 --paired-end --bowtie2 --no-bam-output ../A1/sim_1.fastq ../A1/sim_2.fastq ../../transcriptome_data/ref expressionA1	#
-rsem-calculate-expression -p 4 --paired-end --bowtie2 --no-bam-output ../A2/sim_1.fastq ../A2/sim_2.fastq ../../transcriptome_data/ref expressionA2	#
-rsem-calculate-expression -p 4 --paired-end --bowtie2 --no-bam-output ../A3/sim_1.fastq ../A3/sim_2.fastq ../../transcriptome_data/ref expressionA3	#
-rsem-calculate-expression -p 4 --paired-end --bowtie2 --no-bam-output ../A4/sim_1.fastq ../A4/sim_2.fastq ../../transcriptome_data/ref expressionA4	#
-rsem-calculate-expression -p 4 --paired-end --bowtie2 --no-bam-output ../A5/sim_1.fastq ../A5/sim_2.fastq ../../transcriptome_data/ref expressionA5	#
-# also use rsem-PME																	#
-rsem-calculate-expression -p 4 --calc-pme --paired-end --bowtie2 --no-bam-output ../A1/sim_1.fastq ../A1/sim_2.fastq ../../transcriptome_data/ref expressionPMEA1	#
-rsem-calculate-expression -p 4 --calc-pme --paired-end --bowtie2 --no-bam-output ../A2/sim_1.fastq ../A2/sim_2.fastq ../../transcriptome_data/ref expressionPMEA2	#
-rsem-calculate-expression -p 4 --calc-pme --paired-end --bowtie2 --no-bam-output ../A3/sim_1.fastq ../A3/sim_2.fastq ../../transcriptome_data/ref expressionPMEA3	#
-rsem-calculate-expression -p 4 --calc-pme --paired-end --bowtie2 --no-bam-output ../A4/sim_1.fastq ../A4/sim_2.fastq ../../transcriptome_data/ref expressionPMEA4	#
-rsem-calculate-expression -p 4 --calc-pme --paired-end --bowtie2 --no-bam-output ../A5/sim_1.fastq ../A5/sim_2.fastq ../../transcriptome_data/ref expressionPMEA5	#
-# Process output																	#
-R CMD BATCH ../../rsemNames.R																#
-R CMD BATCH ../../withinGeneRSEM.R															#
-cd ..																			#
-#########################################################################################################################################################
+#################################################################################################################################################################
+# Run RSEM																			#
+mkdir rsem																			#
+cd rsem																				#
+# NOTE: Each of the following commands can also run in parallel for each replicate (highly recommended).							#
+rsem-calculate-expression -p 4 --paired-end --bowtie2 --no-bam-output ../A1/out1.fq ../A1/out2.fq ../../transcriptome_data/ref expressionA1			#
+rsem-calculate-expression -p 4 --paired-end --bowtie2 --no-bam-output ../A2/out1.fq ../A2/out2.fq ../../transcriptome_data/ref expressionA2			#
+rsem-calculate-expression -p 4 --paired-end --bowtie2 --no-bam-output ../A3/out1.fq ../A3/out2.fq ../../transcriptome_data/ref expressionA3			#
+rsem-calculate-expression -p 4 --paired-end --bowtie2 --no-bam-output ../A4/out1.fq ../A4/out2.fq ../../transcriptome_data/ref expressionA4			#
+rsem-calculate-expression -p 4 --paired-end --bowtie2 --no-bam-output ../A5/out1.fq ../A5/out2.fq ../../transcriptome_data/ref expressionA5			#
+# uncomment the following lines if you want to use rsem-PME													#
+#rsem-calculate-expression -p 4 --calc-pme --paired-end --bowtie2 --no-bam-output ../A1/out1.fq ../A1/out2.fq ../../transcriptome_data/ref expressionA1		#
+#rsem-calculate-expression -p 4 --calc-pme --paired-end --bowtie2 --no-bam-output ../A2/out1.fq ../A2/out2.fq ../../transcriptome_data/ref expressionA2		#
+#rsem-calculate-expression -p 4 --calc-pme --paired-end --bowtie2 --no-bam-output ../A3/out1.fq ../A3/out2.fq ../../transcriptome_data/ref expressionA3		#
+#rsem-calculate-expression -p 4 --calc-pme --paired-end --bowtie2 --no-bam-output ../A4/out1.fq ../A4/out2.fq ../../transcriptome_data/ref expressionA4		#
+#rsem-calculate-expression -p 4 --calc-pme --paired-end --bowtie2 --no-bam-output ../A5/out1.fq ../A5/out2.fq ../../transcriptome_data/ref expressionA5		#
+# Process output																		#
+R CMD BATCH ../../rsemNames.R																	#
+R CMD BATCH ../../withinGeneRSEM.R																#
+cd ..																				#
+#################################################################################################################################################################
 
 
 # STEP 4.f Sailfish
-#########################################################################################################################################
-# Run Sailfish																#
-mkdir sailfish																#
-cd sailfish																#
-sailfish quant -i ../../transcriptome_data/indDir -p 4 -l "T=PE" -1 ../A1/sim_1.fastq -2 ../A1/sim_2.fastq -o A1			#
-sailfish quant -i ../../transcriptome_data/indDir -p 4 -l "T=PE" -1 ../A2/sim_1.fastq -2 ../A2/sim_2.fastq -o A2			#
-sailfish quant -i ../../transcriptome_data/indDir -p 4 -l "T=PE" -1 ../A3/sim_1.fastq -2 ../A3/sim_2.fastq -o A3			#
-sailfish quant -i ../../transcriptome_data/indDir -p 4 -l "T=PE" -1 ../A4/sim_1.fastq -2 ../A4/sim_2.fastq -o A4			#
-sailfish quant -i ../../transcriptome_data/indDir -p 4 -l "T=PE" -1 ../A5/sim_1.fastq -2 ../A5/sim_2.fastq -o A5			#
-# Process output															#
-R CMD BATCH ../../sailfishNames.R													#
-R CMD BATCH ../../withinGeneSailfish.R													#
-cd ..																	#
-#########################################################################################################################################
+#################################################################################################################
+# Run Sailfish													#
+mkdir sailfish													#
+cd sailfish													#
+sailfish quant -i ../../transcriptome_data/indDir -p 4 -l "T=PE" -1 ../A1/out1.fq -2 ../A1/out2.fq -o A1	#
+sailfish quant -i ../../transcriptome_data/indDir -p 4 -l "T=PE" -1 ../A2/out1.fq -2 ../A2/out2.fq -o A2	#
+sailfish quant -i ../../transcriptome_data/indDir -p 4 -l "T=PE" -1 ../A3/out1.fq -2 ../A3/out2.fq -o A3	#
+sailfish quant -i ../../transcriptome_data/indDir -p 4 -l "T=PE" -1 ../A4/out1.fq -2 ../A4/out2.fq -o A4	#
+sailfish quant -i ../../transcriptome_data/indDir -p 4 -l "T=PE" -1 ../A5/out1.fq -2 ../A5/out2.fq -o A5	#
+# Process output												#
+R CMD BATCH ../../sailfishNames.R										#
+R CMD BATCH ../../withinGeneSailfish.R										#
+cd ..														#
+#################################################################################################################
 
 
 # STEP 4.g Tigar2
