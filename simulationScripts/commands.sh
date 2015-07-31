@@ -101,31 +101,31 @@ mkdir tophat																		#
 cd tophat																		#
 # NOTE: Each of the following commands can also run in parallel for each replicate (highly recommended).						# 
 #replicate 1																		#
-tophat -o A1.tophat.out -p 4 -g 20 -i 20 -m 2 -r 200 --microexon-search --min-anchor-length 3 --read-mismatches 10 --read-gap-length 10 --read-edit-dist 10 ../../Bowtie2Index/genome ../A1/sim_1.fastq ../A1/sim_2.fastq							#
+tophat -o A1.tophat.out -p 4 -g 100 --read-mismatches 10 --read-gap-length 10 --read-edit-dist 10 ../../Bowtie2Index/genome ../A1/sim_1.fastq ../A1/sim_2.fastq																		#
 cd A1.tophat.out																	#
 samtools sort accepted_hits.bam accepted_hits.sorted													#
 samtools index accepted_hits.sorted.bam															#
 cd ..																			#
 #replicate 2																		#
-tophat -o A2.tophat.out -p 4 -g 20 -i 20 -m 2 -r 200 --microexon-search --min-anchor-length 3 --read-mismatches 10 --read-gap-length 10 --read-edit-dist 10 ../../Bowtie2Index/genome ../A2/sim_1.fastq ../A2/sim_2.fastq							#
+tophat -o A2.tophat.out -p 4 -g 100 --read-mismatches 10 --read-gap-length 10 --read-edit-dist 10 ../../Bowtie2Index/genome ../A2/sim_1.fastq ../A2/sim_2.fastq																		#
 cd A2.tophat.out																	#
 samtools sort accepted_hits.bam accepted_hits.sorted													#
 samtools index accepted_hits.sorted.bam															#
 cd ..																			#
 #replicate 3																		#
-tophat -o A3.tophat.out -p 4 -g 20 -i 20 -m 2 -r 200 --microexon-search --min-anchor-length 3 --read-mismatches 10 --read-gap-length 10 --read-edit-dist 10 ../../Bowtie2Index/genome ../A3/sim_1.fastq ../A3/sim_2.fastq							#
+tophat -o A3.tophat.out -p 4 -g 100 --read-mismatches 10 --read-gap-length 10 --read-edit-dist 10 ../../Bowtie2Index/genome ../A3/sim_1.fastq ../A3/sim_2.fastq																		#
 cd A3.tophat.out																	#
 samtools sort accepted_hits.bam accepted_hits.sorted													#
 samtools index accepted_hits.sorted.bam															#
 cd ..																			#
 #replicate 4																		#
-tophat -o A4.tophat.out -p 4 -g 20 -i 20 -m 2 -r 200 --microexon-search --min-anchor-length 3 --read-mismatches 10 --read-gap-length 10 --read-edit-dist 10 ../../Bowtie2Index/genome ../A4/sim_1.fastq ../A4/sim_2.fastq							#
+tophat -o A4.tophat.out -p 4 -g 100 --read-mismatches 10 --read-gap-length 10 --read-edit-dist 10 ../../Bowtie2Index/genome ../A4/sim_1.fastq ../A4/sim_2.fastq																		#
 cd A4.tophat.out																	#
 samtools sort accepted_hits.bam accepted_hits.sorted													#
 samtools index accepted_hits.sorted.bam															#
 cd ..																			#
 #replicate 5																		#
-tophat -o A5.tophat.out -p 4 -g 20 -i 20 -m 2 -r 200 --microexon-search --min-anchor-length 3 --read-mismatches 10 --read-gap-length 10 --read-edit-dist 10 ../../Bowtie2Index/genome ../A5/sim_1.fastq ../A5/sim_2.fastq							#
+tophat -o A5.tophat.out -p 4 -g 100 --read-mismatches 10 --read-gap-length 10 --read-edit-dist 10 ../../Bowtie2Index/genome ../A5/sim_1.fastq ../A5/sim_2.fastq																		#
 cd A5.tophat.out																	#
 samtools sort accepted_hits.bam accepted_hits.sorted													#
 samtools index accepted_hits.sorted.bam															#
