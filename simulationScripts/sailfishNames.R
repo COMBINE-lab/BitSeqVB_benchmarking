@@ -9,7 +9,7 @@ while (length(oneLine <- readLines(myFile, n = 1, warn = FALSE)) > 0){
 }
 close(myFile)
 par(mfrow = c(2,3))
-A1 <- read.table("A1/quant_bias_corrected.sf")
+A1 <- read.table("A1/quant.sf")
 ind <- A1[,2]
 groundTruth <- read.table("../A1/transcriptNames.txt")
 sailA1 <- cbind(groundTruth,numeric(dim(groundTruth)[1]))
@@ -25,7 +25,7 @@ sailA1[,3] <- log(sailA1[,3]/sum(sailA1[,3]))
 #smoothScatter(sailA1[,-1]);points(c(-30,10),c(-30,10),type = "l",col = 2)
 write.table(sailA1,file = "sailA1.txt")
 
-A1 <- read.table("A2/quant_bias_corrected.sf")
+A1 <- read.table("A2/quant.sf")
 ind <- A1[,2]
 groundTruth <- read.table("../A2/transcriptNames.txt")
 sailA1 <- cbind(groundTruth,numeric(dim(groundTruth)[1]))
@@ -41,7 +41,7 @@ sailA1[,3] <- log(sailA1[,3]/sum(sailA1[,3]))
 #smoothScatter(sailA1[,-1]);points(c(-30,10),c(-30,10),type = "l",col = 2)
 write.table(sailA1,file = "sailA2.txt")
 
-A1 <- read.table("A3/quant_bias_corrected.sf")
+A1 <- read.table("A3/quant.sf")
 ind <- A1[,2]
 groundTruth <- read.table("../A3/transcriptNames.txt")
 sailA1 <- cbind(groundTruth,numeric(dim(groundTruth)[1]))
@@ -58,7 +58,7 @@ sailA1[,3] <- log(sailA1[,3]/sum(sailA1[,3]))
 write.table(sailA1,file = "sailA3.txt")
 
 
-A1 <- read.table("A4/quant_bias_corrected.sf")
+A1 <- read.table("A4/quant.sf")
 ind <- A1[,2]
 groundTruth <- read.table("../A4/transcriptNames.txt")
 sailA1 <- cbind(groundTruth,numeric(dim(groundTruth)[1]))
@@ -74,7 +74,7 @@ sailA1[,3] <- log(sailA1[,3]/sum(sailA1[,3]))
 #smoothScatter(sailA1[,-1]);points(c(-30,10),c(-30,10),type = "l",col = 2)
 write.table(sailA1,file = "sailA4.txt")
 
-A1 <- read.table("A5/quant_bias_corrected.sf")
+A1 <- read.table("A5/quant.sf")
 ind <- A1[,2]
 groundTruth <- read.table("../A5/transcriptNames.txt")
 sailA1 <- cbind(groundTruth,numeric(dim(groundTruth)[1]))
