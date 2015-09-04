@@ -11,7 +11,7 @@ rm -r A1.tophat.out
 cd transcriptome_data
 rsem-prepare-reference --bowtie2 known.fa ref #this is for rsem
 sed -e 's/\,.*//' known.fa > output.fasta #this is for making tigar names work
-sailfish index -t known.fa -o indDir -k 20 -p 4 #this is for sailfish
+sailfish index -t known.fa -o indDir -p 4 #this is for sailfish
 
 
 
