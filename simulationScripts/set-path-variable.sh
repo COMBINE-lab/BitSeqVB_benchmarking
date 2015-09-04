@@ -11,7 +11,7 @@ anaconda/1.9.1
 rsem-1.2.15/
 express/express-1.5.1-linux_x86_64
 tigar2
-export LD_LIBRARY_PATH=YOUR_SAILFISH_PATH_HERE/sailfish/Sailfish-0.6.3-Linux_x86-64/lib:$LD_LIBRARY_PATH
-export PATH=YOUR_SAILFISH_PATH_HERE/sailfish/Sailfish-0.6.3-Linux_x86-64/bin:$PATH
+export LD_LIBRARY_PATH=YOUR_SAILFISH_PATH_HERE/sailfish/Sailfish-0.7.3-Linux_x86-64/lib:$LD_LIBRARY_PATH
+export PATH=YOUR_SAILFISH_PATH_HERE/sailfish/Sailfish-0.7.3-Linux_x86-64/bin:$PATH
 compilers/gcc/4.8.2
 
