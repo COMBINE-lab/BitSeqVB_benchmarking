@@ -226,11 +226,11 @@ cd ..																				#
 # Run Sailfish													#
 mkdir sailfish													#
 cd sailfish													#
-sailfish quant -i ../../transcriptome_data/indDir -p 4 -l "T=PE" -1 ../A1/out1.fq -2 ../A1/out2.fq -o A1	#
-sailfish quant -i ../../transcriptome_data/indDir -p 4 -l "T=PE" -1 ../A2/out1.fq -2 ../A2/out2.fq -o A2	#
-sailfish quant -i ../../transcriptome_data/indDir -p 4 -l "T=PE" -1 ../A3/out1.fq -2 ../A3/out2.fq -o A3	#
-sailfish quant -i ../../transcriptome_data/indDir -p 4 -l "T=PE" -1 ../A4/out1.fq -2 ../A4/out2.fq -o A4	#
-sailfish quant -i ../../transcriptome_data/indDir -p 4 -l "T=PE" -1 ../A5/out1.fq -2 ../A5/out2.fq -o A5	#
+sailfish quant -i ../../transcriptome_data/indDir -p 4 -l IU -1 ../A1/out1.fq -2 ../A1/out2.fq -o A1	#
+sailfish quant -i ../../transcriptome_data/indDir -p 4 -l IU -1 ../A2/out1.fq -2 ../A2/out2.fq -o A2	#
+sailfish quant -i ../../transcriptome_data/indDir -p 4 -l IU -1 ../A3/out1.fq -2 ../A3/out2.fq -o A3	#
+sailfish quant -i ../../transcriptome_data/indDir -p 4 -l IU -1 ../A4/out1.fq -2 ../A4/out2.fq -o A4	#
+sailfish quant -i ../../transcriptome_data/indDir -p 4 -l IU -1 ../A5/out1.fq -2 ../A5/out2.fq -o A5	#
 # Process output												#
 R CMD BATCH ../../sailfishNames.R										#
 R CMD BATCH ../../withinGeneSailfish.R										#
