@@ -232,6 +232,19 @@ sailfish quant -i ../../transcriptome_data/indDir -p 4 -l IU -1 ../A3/out1.fq -2
 sailfish quant -i ../../transcriptome_data/indDir -p 4 -l IU -1 ../A4/out1.fq -2 ../A4/out2.fq -o A4	#
 sailfish quant -i ../../transcriptome_data/indDir -p 4 -l IU -1 ../A5/out1.fq -2 ../A5/out2.fq -o A5	#
 # Process output												#
+# Fix the target names
+echo "fixing output names"
+python ../../processSailfishNames.py --input A1/quant.sf --output A1/quant.fixed.sf
+python ../../processSailfishNames.py --input A2/quant.sf --output A2/quant.fixed.sf
+python ../../processSailfishNames.py --input A3/quant.sf --output A3/quant.fixed.sf
+python ../../processSailfishNames.py --input A4/quant.sf --output A4/quant.fixed.sf
+python ../../processSailfishNames.py --input A5/quant.sf --output A5/quant.fixed.sf
+mv A1/quant.fixed.sf A1/quant.sf
+mv A2/quant.fixed.sf A2/quant.sf
+mv A3/quant.fixed.sf A3/quant.sf
+mv A4/quant.fixed.sf A4/quant.sf
+mv A5/quant.fixed.sf A5/quant.sf
+echo "done"
 R CMD BATCH ../../sailfishNames.R										#
 R CMD BATCH ../../withinGeneSailfish.R										#
 cd ..														#
